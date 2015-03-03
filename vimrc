@@ -1,35 +1,37 @@
 set nocompatible
-filetype plugin indent on
+filetype off                " required for vundle
 
 set autoindent
 set tabstop=4
 set softtabstop=4
 set shiftwidth=4
-set noexpandtab
 
-set incsearch	" search as characters are entered
+set noexpandtab
+set nofoldenable            " disables code folding
+
+set incsearch	            " search as characters are entered
 set hlsearch
 
+" set the runtime path to include vundle and initialize
 set rtp+=~/.vim/bundle/vundle/
 call vundle#rc()
 
-Bundle 'gmarik/vundle'
+Plugin 'gmarik/Vundle.vim'
 
-" My Bundles here
-Bundle 'bling/vim-airline'
-Bundle 'scrooloose/syntastic'
-Bundle 'scrooloose/nerdtree'
-Bundle 'elzr/vim-json'
-Bundle 'Glench/Vim-Jinja2-Syntax'
-Bundle 'klen/python-mode'
-Bundle 'dart-lang/dart-vim-plugin'
-Bundle 'terryma/vim-multiple-cursors'
-Bundle 'shawncplus/phpcomplete.vim'
-" Original repos on github
+" My Plugins here
+Plugin 'bling/vim-airline'
+Plugin 'scrooloose/syntastic'
+Plugin 'elzr/vim-json'
+Plugin 'Glench/Vim-Jinja2-Syntax'
+Plugin 'klen/python-mode'
+Plugin 'dart-lang/dart-vim-plugin'
+Plugin 'terryma/vim-multiple-cursors'
+Plugin 'shawncplus/phpcomplete.vim'
+Plugin 'chriskempson/base16-vim'
+Plugin 'dag/vim2hs'
 
-" Vim-scripts repos
-
-" Non-github repos
+" all of your plugins must be added before the following line
+call vundle#end()           " required
 
 filetype plugin indent on	" required!
 
@@ -39,12 +41,11 @@ syntax enable
 
 colorscheme base16-railscasts
 set background=dark
-set guifont=Sauce_Code_Powerline_Black:h14
 
 set laststatus=2
 set ttimeoutlen=50
 
-" Automatically remove trialing whitespace on save
+" Automatically remove trailing whitespace on save
 autocmd BufWritePre * :%s/\s\+$//e
 
 " Set HTML-Jinja syntax highlighting
@@ -72,12 +73,12 @@ if !exists('g:airline_symbols')
 	let g:airline_symbols = {}
 endif
 
-" let g:airline_left_sep = '▶'
-" let g:airline_right_sep = '<'
 let g:airline_symbols.space = "\ua0"
 let g:airline_symbols.branch = '⎇'
 
 " python-mode
 let g:pymode_doc = 0
+let g:pymode_rope = 0
+let g:pymode_rope_lookup_project = 0
 
 set completeopt-=preview
